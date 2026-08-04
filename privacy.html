@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="ChatGPT 工具箱隐私政策。" />
+    <title>隐私政策 · ChatGPT 工具箱</title>
+    <link rel="icon" href="icon-128.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="brand" href="index.html">
+          <img src="icon-128.png" alt="" />
+          <strong>ChatGPT 工具箱</strong>
+        </a>
+        <nav class="site-nav" aria-label="页面导航">
+          <a href="index.html">产品主页</a>
+          <a href="#contact">联系</a>
+          <a href="#english" lang="en">English</a>
+        </nav>
+      </header>
+
+      <main class="policy">
+        <div class="eyebrow">生效日期：2026-08-04</div>
+        <h1>隐私政策</h1>
+        <p>ChatGPT 工具箱是一款在用户浏览器中运行的会话整理扩展。本政策说明扩展为了提供批量选择和删除功能，会处理哪些数据，以及如何保护这些数据。</p>
+
+        <h2>扩展处理的数据</h2>
+        <p>扩展仅在 <code>chatgpt.com</code> 页面运行，并在本地处理：</p>
+        <ul>
+          <li>ChatGPT 侧边栏中已经显示的对话标题、对话链接和对话标识，用于展示多选界面并识别用户选择的对话。</li>
+          <li>ChatGPT 当前登录会话提供的访问令牌，用于在用户明确确认删除后，向 <code>chatgpt.com</code> 发送删除请求。</li>
+        </ul>
+        <p>扩展不读取对话正文、密码、Cookie、付款信息、浏览器历史记录或其他网站的数据。</p>
+
+        <h2>数据的使用与传输</h2>
+        <p>上述数据只用于完成用户主动发起的会话整理操作。删除请求通过 HTTPS 直接发送到 <code>chatgpt.com</code>；扩展不会把对话信息、访问令牌或使用情况发送到开发者服务器、广告服务、分析服务或其他第三方。</p>
+        <p>扩展不出售用户数据，不使用用户数据投放广告，不允许开发者或其他人员读取用户数据，也不会将数据用于会话整理之外的目的。</p>
+
+        <div class="notice">扩展对数据的使用遵守 Chrome Web Store User Data Policy，包括 Limited Use 要求。</div>
+
+        <h2>数据保存</h2>
+        <p>对话选择状态和访问令牌只存在于当前页面内存中。访问令牌会在快速删除阶段结束后立即清除；选择状态会在退出整理模式、刷新或关闭页面后消失。扩展不使用 Chrome Storage、Local Storage、IndexedDB 或开发者服务器持久保存这些数据。</p>
+
+        <h2>权限</h2>
+        <ul>
+          <li><code>activeTab</code>：仅在用户点击扩展图标时识别当前 ChatGPT 标签页并与其通信。</li>
+          <li><code>scripting</code>：仅在用户主动点击扩展图标且当前页面尚未加载内容脚本时，注入扩展包内置的本地 JavaScript 和 CSS；扩展不下载或执行远程代码。</li>
+          <li><code>https://chatgpt.com/*</code>：在 ChatGPT 页面显示会话整理界面，并执行用户确认的删除操作。</li>
+        </ul>
+
+        <h2>用户控制</h2>
+        <p>扩展只删除用户明确勾选并二次确认的对话。用户可以在执行前取消，在执行过程中暂停或停止。删除操作由 ChatGPT 执行且不可恢复。卸载扩展即可移除扩展代码；由于扩展不持久保存用户数据，因此没有需要另外清除的扩展数据。</p>
+
+        <h2 id="contact">联系方式</h2>
+        <p>如对本政策或扩展行为有疑问，请通过 Chrome Web Store 商品页中的支持渠道联系开发者。请勿发送访问令牌、Cookie、密码或私人对话内容。</p>
+
+        <p>ChatGPT 是 OpenAI 的商标。本扩展是独立的第三方工具，与 OpenAI 无隶属、合作或认可关系。</p>
+
+        <section class="policy-language" id="english" lang="en" aria-labelledby="english-title">
+          <div class="eyebrow">Effective date: August 4, 2026</div>
+          <h2 id="english-title">Privacy Policy</h2>
+          <p>Toolbox for ChatGPT is a conversation-cleanup extension that runs in the user's browser. This policy explains what data the extension handles to provide bulk selection and deletion, and how that data is protected.</p>
+
+          <h3>Data handled by the extension</h3>
+          <p>The extension runs only on <code>chatgpt.com</code> and locally handles:</p>
+          <ul>
+            <li>Conversation titles, links, and identifiers already displayed in the ChatGPT sidebar, used to show the multi-select interface and identify conversations selected by the user.</li>
+            <li>The access token provided by the current signed-in ChatGPT session, used only after explicit deletion confirmation to send deletion requests to <code>chatgpt.com</code>.</li>
+          </ul>
+          <p>The extension does not read conversation bodies, passwords, cookies, payment information, browser history, or data from other websites.</p>
+
+          <h3>Use and transmission</h3>
+          <p>This data is used only to complete conversation-cleanup actions initiated by the user. Deletion requests are sent directly to <code>chatgpt.com</code> over HTTPS. Conversation information, access tokens, and usage information are never sent to developer servers, advertising services, analytics services, or other third parties.</p>
+          <p>The extension does not sell user data, use it for advertising, permit the developer or other people to read it, or use it for any purpose unrelated to conversation cleanup.</p>
+
+          <div class="notice">The extension's use of data complies with the Chrome Web Store User Data Policy, including the Limited Use requirements.</div>
+
+          <h3>Retention</h3>
+          <p>Conversation selection state and the access token exist only in the current page's memory. The token is cleared immediately after the fast deletion phase. Selection state disappears when cleanup mode is closed or the page is refreshed or closed. The extension does not use Chrome Storage, Local Storage, IndexedDB, or developer servers to persist this data.</p>
+
+          <h3>Permissions</h3>
+          <ul>
+            <li><code>activeTab</code>: Used only after the user clicks the extension icon to identify and communicate with the current ChatGPT tab.</li>
+            <li><code>scripting</code>: Used only after an explicit extension-icon click to inject the packaged local JavaScript and CSS when the current page has not loaded the content script. The extension does not download or execute remote code.</li>
+            <li><code>https://chatgpt.com/*</code>: Used to show the conversation-cleanup interface and carry out deletion actions confirmed by the user.</li>
+          </ul>
+
+          <h3>User control</h3>
+          <p>The extension deletes only conversations the user explicitly selects and confirms a second time. Users can cancel before execution, or pause or stop an active task. Deletion is performed by ChatGPT and cannot be undone. Uninstalling removes the extension code; because the extension does not persist user data, there is no separate extension data to delete.</p>
+
+          <h3>Contact</h3>
+          <p>For questions about this policy or the extension's behavior, use the support channel on the Chrome Web Store listing. Do not send access tokens, cookies, passwords, or private conversation content.</p>
+
+          <p>ChatGPT is a trademark of OpenAI. This independent third-party extension is not affiliated with, sponsored by, or endorsed by OpenAI.</p>
+        </section>
+      </main>
+
+      <footer class="site-footer">© 2026 ChatGPT 工具箱贡献者</footer>
+    </div>
+  </body>
+</html>
