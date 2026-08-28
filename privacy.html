@@ -11,93 +11,97 @@
   <body>
     <div class="site-shell">
       <header class="site-header">
-        <a class="brand" href="index.html">
-          <img src="icon-128.png" alt="" />
-          <strong>ChatGPT 工具箱</strong>
-        </a>
-        <nav class="site-nav" aria-label="页面导航">
-          <a href="index.html">产品主页</a>
-          <a href="#contact">联系</a>
-          <a href="#english" lang="en">English</a>
-        </nav>
+        <a class="brand" href="index.html"><img src="icon-128.png" alt="" /><strong>ChatGPT 工具箱</strong></a>
+        <nav class="site-nav" aria-label="页面导航"><a href="index.html">产品主页</a><a href="#contact">联系</a><a href="#english" lang="en">English</a></nav>
       </header>
 
       <main class="policy">
-        <div class="eyebrow">生效日期：2026-08-04</div>
+        <div class="eyebrow">生效日期：2026-08-27</div>
         <h1>隐私政策</h1>
-        <p>ChatGPT 工具箱是一款在用户浏览器中运行的会话整理扩展。本政策说明扩展为了提供批量选择和删除功能，会处理哪些数据，以及如何保护这些数据。</p>
+        <p>ChatGPT 工具箱是一款在用户浏览器中运行的本地会话整理扩展。本政策说明本地目录、备份、批量移动和用户确认的永久删除会处理哪些数据。</p>
 
         <h2>扩展处理的数据</h2>
-        <p>扩展仅在 <code>chatgpt.com</code> 页面运行，并在本地处理：</p>
+        <p>扩展仅在 <code>chatgpt.com</code> 运行，并在本地处理：</p>
         <ul>
-          <li>ChatGPT 侧边栏中已经显示的对话标题、对话链接和对话标识，用于展示多选界面并识别用户选择的对话。</li>
-          <li>ChatGPT 当前登录会话提供的访问令牌，用于在用户明确确认删除后，向 <code>chatgpt.com</code> 发送删除请求。</li>
+          <li>用户创建的目录名称、层级、顺序和展开状态；旧版备份可能保留一个不再展示或编辑的颜色字段。</li>
+          <li>侧边栏已经显示的会话标题、链接和标识，用于目录展示、一对一绑定和用户选择的批量操作。</li>
+          <li>页面中可见的当前账户/工作区资料标记，仅在内存中计算匿名本地 scope 哈希；原始标记不会写入存储或日志。</li>
+          <li>当前 ChatGPT 会话响应中的访问令牌，用于每天最多一次的只读失效引用校验，以及用户明确确认后的永久删除；令牌只在当前页面内存中临时使用。</li>
         </ul>
-        <p>扩展不读取对话正文、密码、Cookie、付款信息、浏览器历史记录或其他网站的数据。</p>
+        <p>扩展不读取会话正文、密码、Cookie、付款信息、浏览器历史记录或其他网站的数据。失效引用校验只使用列表响应中的会话标识和轻量详情请求的 HTTP 状态；详情正文会被丢弃。该校验不会发起删除、归档或服务端移动请求。</p>
 
-        <h2>数据的使用与传输</h2>
-        <p>上述数据只用于完成用户主动发起的会话整理操作。删除请求通过 HTTPS 直接发送到 <code>chatgpt.com</code>；扩展不会把对话信息、访问令牌或使用情况发送到开发者服务器、广告服务、分析服务或其他第三方。</p>
-        <p>扩展不出售用户数据，不使用用户数据投放广告，不允许开发者或其他人员读取用户数据，也不会将数据用于会话整理之外的目的。</p>
-
+        <h2>使用与传输</h2>
+        <p>目录、标题快照、链接、绑定、匿名 scope 哈希和设置只用于本地组织、导航、备份与恢复。只读失效引用校验和永久删除请求都通过 HTTPS 直接发送到 <code>chatgpt.com</code>。任何上述数据、访问令牌或使用情况都不会发送到开发者服务器、广告服务、分析服务或其他第三方。</p>
+        <p>扩展不出售用户数据、不用于广告，也不允许开发者或其他人员读取用户数据。</p>
         <div class="notice">扩展对数据的使用遵守 Chrome Web Store User Data Policy，包括 Limited Use 要求。</div>
 
         <h2>数据保存</h2>
-        <p>对话选择状态和访问令牌只存在于当前页面内存中。访问令牌会在快速删除阶段结束后立即清除；选择状态会在退出整理模式、刷新或关闭页面后消失。扩展不使用 Chrome Storage、Local Storage、IndexedDB 或开发者服务器持久保存这些数据。</p>
+        <ul>
+          <li>目录、标题快照、会话绑定、匿名 scope 哈希和设置保存在 <code>chrome.storage.local</code>；不使用同步存储、Local Storage、IndexedDB 或开发者服务器。</li>
+          <li>扩展 popup 只保留会话整理和“设置与数据”入口；独立设置页会在“导出备份”旁显示本地目录数据占用，并提供带 schema 版本的 JSON 导出、导入及全部本地目录数据清除。</li>
+          <li>备份包含目录名和会话标题，可能含有敏感信息；只下载到用户选择的本机位置，不会自动上传。</li>
+          <li>卸载扩展会由 Chrome 清除本地目录。待绑定状态、选择状态和访问令牌只存在于页面内存；令牌在每次失效引用校验或快速删除阶段结束后立即清除。</li>
+        </ul>
 
         <h2>权限</h2>
         <ul>
-          <li><code>activeTab</code>：仅在用户点击扩展图标时识别当前 ChatGPT 标签页并与其通信。</li>
-          <li><code>scripting</code>：仅在用户主动点击扩展图标且当前页面尚未加载内容脚本时，注入扩展包内置的本地 JavaScript 和 CSS；扩展不下载或执行远程代码。</li>
-          <li><code>https://chatgpt.com/*</code>：在 ChatGPT 页面显示会话整理界面，并执行用户确认的删除操作。</li>
+          <li><code>storage</code>：保存本地目录、标题快照、绑定关系和设置；旧版备份可能包含兼容用的最后备份时间字段。</li>
+          <li><code>activeTab</code>：用户点击扩展图标时识别并联系当前 ChatGPT 标签页。</li>
+          <li><code>scripting</code>：仅在当前页面尚未加载扩展时，注入扩展包内置的本地 JavaScript 和 CSS；不下载或执行远程代码。</li>
+          <li><code>https://chatgpt.com/*</code>：显示本地目录与会话整理界面，执行只读失效引用校验，并执行用户单独确认的永久删除。</li>
         </ul>
+        <p>扩展不申请 <code>unlimitedStorage</code>、<code>tabs</code>、其他站点 host 或第三方网络权限。</p>
 
         <h2>用户控制</h2>
-        <p>扩展只删除用户明确勾选并二次确认的对话。用户可以在执行前取消，在执行过程中暂停或停止。删除操作由 ChatGPT 执行且不可恢复。卸载扩展即可移除扩展代码；由于扩展不持久保存用户数据，因此没有需要另外清除的扩展数据。</p>
+        <p>会话可随时从目录移出。失效引用校验每个账号/工作区最多 24 小时一次；列表缺失只触发详情确认，只有明确 404 才解除本地绑定，其他错误全部保留，并汇总提示不会删除 ChatGPT 会话。删除目录会明确说明只删除本地目录，不删除 ChatGPT 会话，并在成功写入后立即生效、不提供撤销。永久删除会话使用独立红色入口和不可恢复确认。用户可导出、导入或清除本地数据，并可暂停或停止永久删除任务。</p>
 
         <h2 id="contact">联系方式</h2>
-        <p>如对本政策或扩展行为有疑问，请通过 Chrome Web Store 商品页中的支持渠道联系开发者。请勿发送访问令牌、Cookie、密码或私人对话内容。</p>
-
+        <p>如有疑问，请通过 Chrome Web Store 商品页支持渠道联系开发者。请勿发送访问令牌、Cookie、密码或私人会话内容。</p>
         <p>ChatGPT 是 OpenAI 的商标。本扩展是独立的第三方工具，与 OpenAI 无隶属、合作或认可关系。</p>
 
         <section class="policy-language" id="english" lang="en" aria-labelledby="english-title">
-          <div class="eyebrow">Effective date: August 4, 2026</div>
+          <div class="eyebrow">Effective date: August 27, 2026</div>
           <h2 id="english-title">Privacy Policy</h2>
-          <p>Toolbox for ChatGPT is a conversation-cleanup extension that runs in the user's browser. This policy explains what data the extension handles to provide bulk selection and deletion, and how that data is protected.</p>
+          <p>ChatGPT Toolbox: Folders &amp; Cleanup is a local conversation-organization extension that runs in the user's browser. This policy covers local folders, backups, bulk moves, and separately confirmed permanent deletion.</p>
 
           <h3>Data handled by the extension</h3>
-          <p>The extension runs only on <code>chatgpt.com</code> and locally handles:</p>
           <ul>
-            <li>Conversation titles, links, and identifiers already displayed in the ChatGPT sidebar, used to show the multi-select interface and identify conversations selected by the user.</li>
-            <li>The access token provided by the current signed-in ChatGPT session, used only after explicit deletion confirmation to send deletion requests to <code>chatgpt.com</code>.</li>
+            <li>Folder names, hierarchy, order, and expansion settings created by the user; legacy backups may retain a color field that is no longer displayed or editable.</li>
+            <li>Chat titles, links, and identifiers already displayed in the sidebar, used for folder display, one-to-one local membership, and user-selected bulk actions.</li>
+            <li>A profile marker visible on the current page, used only in memory to derive an anonymous local scope hash. The raw marker is never stored or logged.</li>
+            <li>The current ChatGPT session response's access token, used temporarily in page memory for a read-only unavailable-reference check at most once per day and for separately confirmed permanent deletion.</li>
           </ul>
-          <p>The extension does not read conversation bodies, passwords, cookies, payment information, browser history, or data from other websites.</p>
+          <p>The extension does not read conversation bodies, passwords, cookies, payment information, browser history, or data from other sites. The unavailable-reference check uses only conversation identifiers from list responses and the HTTP status of lightweight detail requests; detail bodies are discarded. This check never sends delete, archive, or server-side move requests.</p>
 
           <h3>Use and transmission</h3>
-          <p>This data is used only to complete conversation-cleanup actions initiated by the user. Deletion requests are sent directly to <code>chatgpt.com</code> over HTTPS. Conversation information, access tokens, and usage information are never sent to developer servers, advertising services, analytics services, or other third parties.</p>
-          <p>The extension does not sell user data, use it for advertising, permit the developer or other people to read it, or use it for any purpose unrelated to conversation cleanup.</p>
-
-          <div class="notice">The extension's use of data complies with the Chrome Web Store User Data Policy, including the Limited Use requirements.</div>
+          <p>Folder metadata is used only for local organization, navigation, backup, and restore. Read-only unavailable-reference checks and permanent-deletion requests go directly to <code>chatgpt.com</code> over HTTPS. No folder data, chat metadata, access token, or usage information is sent to developer servers, advertising services, analytics services, or other third parties.</p>
+          <div class="notice">The extension complies with the Chrome Web Store User Data Policy, including Limited Use requirements.</div>
 
           <h3>Retention</h3>
-          <p>Conversation selection state and the access token exist only in the current page's memory. The token is cleared immediately after the fast deletion phase. Selection state disappears when cleanup mode is closed or the page is refreshed or closed. The extension does not use Chrome Storage, Local Storage, IndexedDB, or developer servers to persist this data.</p>
+          <ul>
+            <li>Folders, title snapshots, memberships, anonymous scope hashes, and settings are stored in <code>chrome.storage.local</code>, never sync storage, Local Storage, IndexedDB, or developer servers.</li>
+            <li>The popup keeps only the organizer and Settings &amp; data entries. The separate options page shows local folder-data usage beside Export backup and provides schema-versioned export, import, and clearing.</li>
+            <li>Backups can contain sensitive folder names and chat titles. They are downloaded only to a user-selected local location and never uploaded automatically.</li>
+            <li>Chrome clears local extension storage on uninstall. Pending bindings, selections, and access tokens stay only in page memory; access tokens are cleared after each unavailable-reference check or fast deletion phase.</li>
+          </ul>
 
           <h3>Permissions</h3>
           <ul>
-            <li><code>activeTab</code>: Used only after the user clicks the extension icon to identify and communicate with the current ChatGPT tab.</li>
-            <li><code>scripting</code>: Used only after an explicit extension-icon click to inject the packaged local JavaScript and CSS when the current page has not loaded the content script. The extension does not download or execute remote code.</li>
-            <li><code>https://chatgpt.com/*</code>: Used to show the conversation-cleanup interface and carry out deletion actions confirmed by the user.</li>
+            <li><code>storage</code>: Saves local folders, title snapshots, memberships, and settings. Legacy backups may contain a compatibility-only last-backup timestamp.</li>
+            <li><code>activeTab</code>: Identifies and communicates with the current ChatGPT tab after an extension-icon click.</li>
+            <li><code>scripting</code>: Injects only packaged local JavaScript and CSS when an already-open page has not loaded the extension. No remote code is downloaded or executed.</li>
+            <li><code>https://chatgpt.com/*</code>: Shows folder and cleanup UI, performs read-only unavailable-reference checks, and performs only separately confirmed permanent deletion.</li>
           </ul>
+          <p>The extension does not request <code>unlimitedStorage</code>, <code>tabs</code>, other-site hosts, or third-party network access.</p>
 
           <h3>User control</h3>
-          <p>The extension deletes only conversations the user explicitly selects and confirms a second time. Users can cancel before execution, or pause or stop an active task. Deletion is performed by ChatGPT and cannot be undone. Uninstalling removes the extension code; because the extension does not persist user data, there is no separate extension data to delete.</p>
+          <p>Chats can be removed from folders at any time. Unavailable-reference checks run at most once per account/workspace every 24 hours: a list miss only triggers detail confirmation, and only an explicit 404 removes the local membership. All other errors keep it, and a summary explains that no ChatGPT chat was deleted. Folder deletion explicitly says it affects only local folders and never ChatGPT chats; successful changes apply immediately without undo. Permanent deletion has a separate red entry and irreversible confirmation. Users can export, import, or clear local data and can pause or stop permanent-deletion tasks.</p>
 
           <h3>Contact</h3>
-          <p>For questions about this policy or the extension's behavior, use the support channel on the Chrome Web Store listing. Do not send access tokens, cookies, passwords, or private conversation content.</p>
-
+          <p>Use the Chrome Web Store support channel for questions. Do not send access tokens, cookies, passwords, or private conversation content.</p>
           <p>ChatGPT is a trademark of OpenAI. This independent third-party extension is not affiliated with, sponsored by, or endorsed by OpenAI.</p>
         </section>
       </main>
-
       <footer class="site-footer">© 2026 ChatGPT 工具箱贡献者</footer>
     </div>
   </body>
